@@ -1,0 +1,53 @@
+{
+  "name": "@cododel/alto",
+  "version": "0.0.1",
+  "description": "A powerful CLI tool for directus",
+  "keywords": [
+    "cli",
+    "typescript",
+    "directus",
+    "code-generation"
+  ],
+  "author": "Alexander Smith <websmithcode@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cododel/alto.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cododel/alto/issues"
+  },
+  "homepage": "https://github.com/cododel/alto#readme",
+  "module": "index.ts",
+  "type": "module",
+  "bin": {
+    "alto": "./index.ts"
+  },
+  "exports": {
+    ".": "./index.ts",
+    "./cli": "./cli.ts"
+  },
+  "scripts": {
+    "alto": "bun .",
+    "build": "bun build index.ts --outdir dist --target node",
+    "prepublishOnly": "bun run build",
+    "test:install": "./scripts/test-install.sh"
+  },
+  "workspaces": [
+    "commands/*"
+  ],
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/execa": "^2.0.2",
+    "@types/yargs": "^17.0.33"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "consola": "^3.4.2",
+    "enquirer": "^2.4.1",
+    "execa": "^9.6.0",
+    "yargs": "^18.0.0"
+  }
+}

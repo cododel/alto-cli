@@ -1,0 +1,33 @@
+# Development files
+.git/
+.gitignore
+.env
+.env.local
+.env.*.local
+
+# Build artifacts
+dist/
+build/
+
+# Development dependencies
+node_modules/
+bun.lock
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test files
+*.test.ts
+*.spec.ts
+coverage/
+
+# Documentation
+README.md
+LICENSE 

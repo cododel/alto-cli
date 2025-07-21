@@ -1,0 +1,41 @@
+{
+  "name": "indirectus",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --parallel dev",
+    "indirectus": "tsx --no-cache --tsconfig packages/cli/tsconfig.json packages/cli/cli/index.ts",
+    "build": "pnpm -r build",
+    "version": "pnpm changeset version",
+    "release": "pnpm -r publish --access public",
+    "ci": "pnpm run version && pnpm run build && pnpm run release"
+  },
+  "devDependencies": {
+    "@directus/sdk": "^20.0.0",
+    "@types/node": "^24.0.12",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4",
+    "ts-toolbelt": "^9.6.0",
+    "@types/nunjucks": "^3.2.6",
+    "@types/pluralize": "^0.0.33",
+    "conditional-type-checks": "^1.0.6"
+  },
+  "optionalDependencies": {
+    "zod": "^3.23.8"
+  },
+  "dependencies": {
+    "@directus/sdk": "^17.0.0",
+    "chokidar": "^3.6.0",
+    "citty": "^0.1.6",
+    "consola": "^3.4.2",
+    "eventemitter2": "^6.4.9",
+    "fast-glob": "^3.3.1",
+    "jiti": "^1.21.6",
+    "nunjucks": "^3.2.4",
+    "pluralize": "^8.0.0",
+    "prettier": "^3.3.3",
+    "ts-pattern": "^5.3.1"
+  },
+  "files": []
+}
