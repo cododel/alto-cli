@@ -1,33 +1,31 @@
+# Source files
+src/
+scripts/
+
 # Development files
-.git/
+tsconfig.json
 .gitignore
-.env
-.env.local
-.env.*.local
+.npmignore
 
-# Build artifacts
-dist/
-build/
+# Lock files
+pnpm-lock.yaml
+bun.lockb
 
-# Development dependencies
-node_modules/
-bun.lock
+# Test files
+*.test.ts
+*.test.js
 
 # IDE files
 .vscode/
 .idea/
-*.swp
-*.swo
 
 # OS files
 .DS_Store
 Thumbs.db
 
-# Test files
-*.test.ts
-*.spec.ts
-coverage/
+# Logs
+*.log
+npm-debug.log*
 
-# Documentation
-README.md
-LICENSE 
+# Dependencies
+node_modules/

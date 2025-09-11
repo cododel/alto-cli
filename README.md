@@ -62,6 +62,12 @@ bun run alto
 # Test local installation
 bun run test:install
 
+# Test package uninstallation
+bun run test:uninstall
+
+# Run full installation cycle test
+bun run test:full-cycle
+
 # Build for distribution
 bun run build
 ```

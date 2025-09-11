@@ -1,6 +1,6 @@
 {
   "name": "@cododel/alto",
-  "version": "0.0.1",
+  "version": "0.1.2",
   "description": "A powerful CLI tool for directus",
   "keywords": [
     "cli",
@@ -12,29 +12,37 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/cododel/alto.git"
+    "url": "git+https://github.com/cododel/alto.git"
   },
   "bugs": {
     "url": "https://github.com/cododel/alto/issues"
   },
   "homepage": "https://github.com/cododel/alto#readme",
-  "module": "index.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
   "type": "module",
   "bin": {
-    "alto": "./index.ts"
+    "alto": "dist/index.js"
   },
   "exports": {
-    ".": "./index.ts",
-    "./cli": "./cli.ts"
+    ".": "./dist/index.js",
+    "./cli": "./dist/cli.js"
   },
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
-    "alto": "bun .",
-    "build": "bun build index.ts --outdir dist --target node",
+    "alto": "bun ./src/index.ts",
+    "build": "bun build src/index.ts --outdir dist --target node --minify --external consola --external enquirer --external execa --external yargs",
     "prepublishOnly": "bun run build",
-    "test:install": "./scripts/test-install.sh"
+    "test:install": "./scripts/test-install.sh",
+    "test:uninstall": "./scripts/test-uninstall.sh",
+    "test:full-cycle": "./scripts/test-full-cycle.sh"
   },
   "workspaces": [
-    "commands/*"
+    "src/commands/*"
   ],
   "devDependencies": {
     "@types/bun": "latest",
