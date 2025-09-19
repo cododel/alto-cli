@@ -7,6 +7,7 @@
 
 ### Changed
 - Updated README to reflect compatibility with Directus SDK v19.0.0+ and new configuration options
+- Separated client generation from type generation for better modularity
 
 ## [0.1.3] - 2025-09-19
 
