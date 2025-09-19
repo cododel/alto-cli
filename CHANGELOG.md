@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.1.4] - 2025-09-19
+
+### Added
+- Documentation for skipping collections during type generation
+
+### Changed
+- Updated README to reflect compatibility with Directus SDK v19.0.0+ and new configuration options
+
+## [0.1.3] - 2025-09-19
+
+### Changed
+- Migrated from npm workspaces to pnpm workspace configuration
+- Removed workspaces field from package.json
+- Added pnpm-workspace.yaml with proper configuration
+
 ## [0.1.2] - 2025-09-12
 
 ### Changed
