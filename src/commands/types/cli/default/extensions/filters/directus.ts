@@ -48,6 +48,7 @@ export function to_collection_name(
       name = regex_replace(context, pascal_case(context, value), "s$", "");
       name = name == "DirectusSetting" ? "DirectusSettings" : name;
       name = name == "DirectusAcces" ? "DirectusAccess" : name;
+      name = name == "DirectusComment" ? "DirectusActivity" : name;
     }
   }
   return name;
@@ -303,19 +304,33 @@ export function to_ts_type(context: TemplateContext, field: Field) {
   return output;
 }
 
-export function only_system_fields(context: TemplateContext, fields: Field[]) {
+export function only_system_fields(_context: TemplateContext, fields: Field[]) {
   return fields.filter((field) => field.is_system);
 }
 
-export function only_custom_fields(context: TemplateContext, fields: Field[]) {
+export function only_custom_fields(_context: TemplateContext, fields: Field[]) {
   return fields.filter((field) => !field.is_system);
 }
 
 export function only_with_custom_fields(
-  context: TemplateContext,
+  _context: TemplateContext,
   collections: Collection[],
 ) {
   return collections.filter(
     (field) => field.fields.filter((field) => !field.is_system).length > 0,
+  );
+}
+
+export function skip_collections(
+  context: TemplateContext,
+  collections: Collection[],
+  skipList?: string[],
+) {
+  // Используем skipList из параметров или из контекста или дефолтное значение
+  const skipCollections = skipList ??
+    context.skipCollections ?? ["directus_comments"];
+
+  return collections.filter(
+    (collection) => !skipCollections.includes(collection.name.raw),
   );
 }

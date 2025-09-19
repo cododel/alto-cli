@@ -1,5 +1,6 @@
 import * as njk from "nunjucks";
-import { TemplateFile, TemplateLoader } from "./template-loader";
+import type { TemplateFile } from "./template-loader";
+import { TemplateLoader } from "./template-loader";
 import type { Registry } from "./registry";
 import type { Schema } from "./schema";
 
@@ -11,6 +12,7 @@ export interface TemplateRenderer {
 export interface TemplateContext {
   registry: Registry;
   schema: Schema;
+  skipCollections?: string[];
   [key: string]: any;
 }
 

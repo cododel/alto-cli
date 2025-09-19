@@ -38,6 +38,12 @@ export const generateCommand: CommandModule = {
         "Whether to enable caching to avoid subsequent requests to the server.",
       default: false,
     },
+    skipCollections: {
+      type: "array",
+      required: false,
+      description: "List of collections to skip during type generation",
+      default: ["directus_comments"],
+    },
   },
   handler: async (argv) => {
     try {
@@ -50,6 +56,7 @@ export const generateCommand: CommandModule = {
           path.join(argv.dir as string, "generated"),
         template: "default",
         useCache: argv.cache as boolean,
+        skipCollections: argv.skipCollections as string[],
       });
 
       generator.on("schema.begin", async () =>
@@ -63,7 +70,7 @@ export const generateCommand: CommandModule = {
         console.error(err);
       });
 
-      generator.on("file.format.error", async (file, err) => {
+      generator.on("file.format.error", async (_file, err) => {
         console.error("Error formatting file", err);
       });
 

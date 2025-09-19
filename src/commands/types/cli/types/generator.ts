@@ -38,6 +38,10 @@ const GeneratorOptionsSchema = z.object({
   useCache: z.boolean().default(false),
   watch: z.boolean().default(false),
   log: z.string().optional().default("info"),
+  skipCollections: z
+    .array(z.string())
+    .optional()
+    .default(["directus_comments"]),
 });
 
 export type GeneratorOptions = z.input<typeof GeneratorOptionsSchema>;
@@ -205,6 +209,7 @@ export class Generator extends TypedEventEmitter<GeneratorEvents> {
           result = await render(file.input, {
             schema: this.schema,
             registry: this.registry,
+            skipCollections: this.options.skipCollections,
           });
 
           const info = await prettier.getFileInfo(file.output);
