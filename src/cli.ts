@@ -8,6 +8,8 @@ export function cli() {
     .usage("$0 <command> [options]")
     .command(typesCommand)
     .demandCommand(1, "You need at least one command")
+    .version()
+    .alias("v", "version")
     .help()
     .completion("completion", "Generate bash completion script")
     .recommendCommands()

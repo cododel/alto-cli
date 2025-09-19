@@ -1,6 +1,6 @@
 {
   "name": "@cododel/alto",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A powerful CLI tool for directus",
   "keywords": [
     "cli",
@@ -41,9 +41,6 @@
     "test:uninstall": "./scripts/test-uninstall.sh",
     "test:full-cycle": "./scripts/test-full-cycle.sh"
   },
-  "workspaces": [
-    "src/commands/*"
-  ],
   "devDependencies": {
     "@types/bun": "latest",
     "@types/execa": "^2.0.2",
