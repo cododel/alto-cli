@@ -1,6 +1,6 @@
 {
   "name": "@cododel/alto",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "A powerful CLI tool for directus",
   "keywords": [
     "cli",
