@@ -9,7 +9,7 @@ const load = jiti(fileURLToPath(import.meta.url), {
 
 import { Loader } from "nunjucks";
 import type { Callback, ILoaderAsync, LoaderSource } from "nunjucks";
-import { glob } from "fast-glob";
+import fg from "fast-glob";
 
 export type TemplateFile = {
   input: string;
@@ -83,7 +83,7 @@ export class TemplateLoader extends Loader implements ILoaderAsync {
     const files: TemplateFile[] = [];
 
     for (const root of this.getTemplateDirs()) {
-      const discovered = await glob("**/*.njk", {
+      const discovered = await fg.glob("**/*.njk", {
         cwd: root,
         absolute: true,
       });
@@ -117,7 +117,7 @@ export class TemplateLoader extends Loader implements ILoaderAsync {
     for (const dir of this.getFilterDirs()) {
       files.push(
         ...(
-          await glob("**/*.{ts,mts,cts,js,mjs,cjs}", {
+          await fg.glob("**/*.{ts,mts,cts,js,mjs,cjs}", {
             cwd: dir,
             ignore: ["**/*.d.ts"],
           })
