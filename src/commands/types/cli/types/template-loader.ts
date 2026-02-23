@@ -1,8 +1,9 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
+import { fileURLToPath } from "node:url";
 import jiti from "jiti";
 
-const load = jiti(__filename, {
+const load = jiti(fileURLToPath(import.meta.url), {
   //debug: true,
 });
 

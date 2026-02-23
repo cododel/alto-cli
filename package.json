@@ -35,7 +35,7 @@
   ],
   "scripts": {
     "alto": "bun ./src/index.ts",
-    "build": "bun build src/index.ts --outdir dist --target node --minify --external consola --external enquirer --external execa --external yargs",
+    "build": "bun build src/index.ts --outdir dist --target node --minify --external consola --external enquirer --external execa --external yargs && cp -r src/commands/types/cli/default dist/default",
     "prepublishOnly": "bun run build",
     "test:install": "./scripts/test-install.sh",
     "test:uninstall": "./scripts/test-uninstall.sh",
@@ -54,5 +54,8 @@
     "enquirer": "^2.4.1",
     "execa": "^9.6.0",
     "yargs": "^18.0.0"
-  }
+  },
+  "workspaces": [
+    "src/commands/*"
+  ]
 }

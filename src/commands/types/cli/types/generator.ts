@@ -10,6 +10,7 @@ import { z } from "zod";
 import { Registry, createRegistry } from "./registry";
 import { type Schema } from "./schema";
 
+import { fileURLToPath } from "node:url";
 import { fetchSchema } from "./schema";
 import { type TemplateRenderer, createRenderer } from "./template";
 import { type TemplateFile } from "./template-loader";
@@ -170,9 +171,12 @@ export class Generator extends TypedEventEmitter<GeneratorEvents> {
 
     await this.runTask("generation", async () => {
       const templateName = template ?? this.options.template;
+      const _dirname = path.dirname(fileURLToPath(import.meta.url));
       const templateDirs = [
-        path.join(__dirname, "../default"),
-        path.join(__dirname, "../../default"),
+        path.join(_dirname, "../default"),
+        path.join(_dirname, "../../default"),
+        path.join(_dirname, "default"),
+        path.join(_dirname, "../src/commands/types/cli/default"),
         this.options.config,
       ].filter((dir) => fs.existsSync(dir));
 
